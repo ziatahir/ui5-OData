@@ -7,7 +7,7 @@ pipeline {
 	    
         stage('Deploy-SCP') {
            steps {
-		   
+		    cleanWs()
 		    echo "deploying on scp"
 			  checkout scm
 			  
