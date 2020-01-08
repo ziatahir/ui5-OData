@@ -1,0 +1,27 @@
+.v-m-legendGroup {
+    visibility: hidden !important;
+}
+
+.RBGroupCls {
+    padding-top: 40px
+}
+
+.passed div div {
+    background-color: #d998cb!important
+}
+
+.failed div div {
+    background-color: #5cbae6!important
+}
+
+.notstarted div div {
+    background-color: #8cd3ff!important
+}
+
+.notfound div div {
+    background-color: #fac364!important
+}
+
+.inprogress div div {
+    background-color: #b6d957!important
+}

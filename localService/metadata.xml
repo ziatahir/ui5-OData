@@ -1,0 +1,229 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZADOP_EPIC_DSB_SRV" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="ZC_ADOP_EPICType" sap:label="Consumption CDS view for ADOP Manager" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="EpicId"/>
+                </Key>
+                <Property Name="EpicId" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Epic" sap:quickinfo="EPIC ID"/>
+                <Property Name="Criticality_QADEP" Type="Edm.Byte"/>
+                <Property Name="PreProdDeployStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PRE-PROD Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_PPDEP" Type="Edm.Byte"/>
+                <Property Name="ProdDeployStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PROD Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_PRODDEP" Type="Edm.Byte"/>
+                <Property Name="EpicStatus" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="EPIC STATUS" sap:quickinfo="EPIC status"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
+                <Property Name="ReleaseCycle" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Phase Cycle" sap:quickinfo="Release Cycle for ADOP"/>
+                <Property Name="EpicOwner" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Epic Owner" sap:quickinfo="EPIC ID Owner"/>
+                <Property Name="QualityTestStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="QA Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_QATST" Type="Edm.Byte"/>
+                <Property Name="PreProdTestStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PRE-PROD Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_PPTST" Type="Edm.Byte"/>
+                <Property Name="QaDeployStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="QA Deploy" sap:quickinfo="Deployment Status"/>
+                <NavigationProperty Name="to_DefectDetail" Relationship="ZADOP_EPIC_DSB_SRV.assoc_6FF36ADAC17A4310E8198EE995073DBB" FromRole="FromRole_assoc_6FF36ADAC17A4310E8198EE995073DBB" ToRole="ToRole_assoc_6FF36ADAC17A4310E8198EE995073DBB"/>
+                <NavigationProperty Name="to_TestDetail" Relationship="ZADOP_EPIC_DSB_SRV.assoc_67819F3338CC5E41F7FE231164775848" FromRole="FromRole_assoc_67819F3338CC5E41F7FE231164775848" ToRole="ToRole_assoc_67819F3338CC5E41F7FE231164775848"/>
+                <NavigationProperty Name="to_Userstory" Relationship="ZADOP_EPIC_DSB_SRV.assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755" FromRole="FromRole_assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755" ToRole="ToRole_assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755"/>
+            </EntityType>
+            <EntityType Name="ZI_ADOP_DEFECTDETAILSType" sap:label="Defect Details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DefectId"/>
+                </Key>
+                <Property Name="DefectId" Type="Edm.String" Nullable="false" MaxLength="50" sap:display-format="UpperCase" sap:label="DefectId" sap:quickinfo="Defect Id"/>
+                <Property Name="JiraId" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="JiraId" sap:quickinfo="Userstory JIRA ID"/>
+                <Property Name="PhaseName" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="PhaseName" sap:quickinfo="Character Field Length = 10"/>
+                <Property Name="DefectStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="DefectStatus" sap:quickinfo="Defect Status"/>
+                <Property Name="CreatedDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="CreatedDate" sap:quickinfo="Date"/>
+                <NavigationProperty Name="to_Subtask" Relationship="ZADOP_EPIC_DSB_SRV.assoc_61301E49B6D042B5ECF87B5C8B20BC02" FromRole="FromRole_assoc_61301E49B6D042B5ECF87B5C8B20BC02" ToRole="ToRole_assoc_61301E49B6D042B5ECF87B5C8B20BC02"/>
+            </EntityType>
+            <EntityType Name="ZI_ADOP_SUBTASKType" sap:label="Subtask details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SubtaskId"/>
+                </Key>
+                <Property Name="SubtaskId" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Subtask" sap:quickinfo="Subtask Jira Id"/>
+                <Property Name="Criticality_DEVTST_S" Type="Edm.Byte"/>
+                <Property Name="QaTestStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="QA Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_QATST_S" Type="Edm.Byte"/>
+                <Property Name="PreProdTestStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PRE-PROD Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_PPTST" Type="Edm.Byte"/>
+                <Property Name="QaDeployStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="QA Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_QADEP_S" Type="Edm.Byte"/>
+                <Property Name="PreProdDeployStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PRE-PROD Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_PPDEP_S" Type="Edm.Byte"/>
+                <Property Name="ProdDeployStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PROD Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
+                <Property Name="Criticality_PRODDEP_S" Type="Edm.Byte"/>
+                <Property Name="ParentJiraId" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Parent Jira ID" sap:quickinfo="Jira ID"/>
+                <Property Name="TechArea_S" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Tech Area" sap:quickinfo="Technical Area"/>
+                <Property Name="SubtaskOwner" Type="Edm.String" MaxLength="255" sap:display-format="UpperCase" sap:label="Subtask Owner"/>
+                <Property Name="SapUser_S" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="SAP User ID" sap:quickinfo="SAP User"/>
+                <Property Name="CodeReviewStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Code Review" sap:quickinfo="Code Review Status"/>
+                <Property Name="CriticalityS_CR_S" Type="Edm.Byte"/>
+                <Property Name="DevTestStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="DEV Test" sap:quickinfo="Test Status"/>
+                <NavigationProperty Name="to_DefectDetail" Relationship="ZADOP_EPIC_DSB_SRV.assoc_728B0560FDF8D31271E73E740DCE8EE3" FromRole="FromRole_assoc_728B0560FDF8D31271E73E740DCE8EE3" ToRole="ToRole_assoc_728B0560FDF8D31271E73E740DCE8EE3"/>
+                <NavigationProperty Name="to_TestDetail" Relationship="ZADOP_EPIC_DSB_SRV.assoc_DF6E677546E33DA930B4F66F2B968724" FromRole="FromRole_assoc_DF6E677546E33DA930B4F66F2B968724" ToRole="ToRole_assoc_DF6E677546E33DA930B4F66F2B968724"/>
+                <NavigationProperty Name="to_TrDetail" Relationship="ZADOP_EPIC_DSB_SRV.assoc_0930B9D5F6230AA2F16D7AC9138BB9AD" FromRole="FromRole_assoc_0930B9D5F6230AA2F16D7AC9138BB9AD" ToRole="ToRole_assoc_0930B9D5F6230AA2F16D7AC9138BB9AD"/>
+            </EntityType>
+            <EntityType Name="ZI_ADOP_TESTDETAILSType" sap:label="Test details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ParentJiraId"/>
+                    <PropertyRef Name="Environment"/>
+                    <PropertyRef Name="TestStage"/>
+                </Key>
+                <Property Name="ParentJiraId" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Userstory" sap:quickinfo="Jira ID"/>
+                <Property Name="Environment" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Environment" sap:quickinfo="Data Element System Environment"/>
+                <Property Name="TestStage" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Test Cycle" sap:quickinfo="Test Phase"/>
+                <Property Name="TestStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Test Status"/>
+                <Property Name="Criticality_TS" Type="Edm.Byte"/>
+                <Property Name="ExeDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Test Date" sap:quickinfo="Date"/>
+                <Property Name="ExeTime" Type="Edm.Time" Precision="0" sap:label="Test Time" sap:quickinfo="Time"/>
+                <Property Name="ExeTimestamp" Type="Edm.DateTimeOffset" Precision="0" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Short Form (YYYYMMDDhhmmss)"/>
+                <Property Name="SeqNo" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="" sap:quickinfo="Sequence number for test stage"/>
+                <NavigationProperty Name="to_Subtask" Relationship="ZADOP_EPIC_DSB_SRV.assoc_1F810514B05134623C031838A21CDA28" FromRole="FromRole_assoc_1F810514B05134623C031838A21CDA28" ToRole="ToRole_assoc_1F810514B05134623C031838A21CDA28"/>
+            </EntityType>
+            <EntityType Name="ZI_ADOP_TRDETAILSType" sap:label="Trasport Request details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Tr"/>
+                    <PropertyRef Name="SubtaskId"/>
+                </Key>
+                <Property Name="Tr" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Transport Request" sap:quickinfo="Request/Task"/>
+                <Property Name="CodeReviewStatus_T" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Code Review" sap:quickinfo="Code Review Status"/>
+                <Property Name="CriticalityS_CR_T" Type="Edm.Byte"/>
+                <Property Name="UtStatus" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Unit Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_UT" Type="Edm.Byte"/>
+                <Property Name="DevTestStatus_T" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="DEV Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_DEVTST_T" Type="Edm.Byte"/>
+                <Property Name="QaDeployStatus_T" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="QA Deployment" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_QADEP_T" Type="Edm.Byte"/>
+                <Property Name="PreProdDeplotStatus_T" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PRE-PROD Deployment" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_PPDEP_T" Type="Edm.Byte"/>
+                <Property Name="SubtaskId" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Subtask Jira ID" sap:quickinfo="Subtask Jira Id"/>
+                <Property Name="ProdDeployStatus_T" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PROD Deployment" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_PRODDEP_T" Type="Edm.Byte"/>
+                <Property Name="ObjType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Object Type"/>
+                <Property Name="Object" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Object Name" sap:quickinfo="Object Name in Object Directory"/>
+                <Property Name="ParentJiraId" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Parent Jira ID" sap:quickinfo="Userstory JIRA ID"/>
+                <Property Name="TechArea" Type="Edm.String" MaxLength="5" sap:display-format="UpperCase" sap:label="Tech Area" sap:quickinfo="Technical Area"/>
+                <Property Name="TrType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="TR Type" sap:quickinfo="Type of request/task"/>
+                <Property Name="TrType_Description" Type="Edm.String" MaxLength="19" sap:display-format="UpperCase"/>
+                <Property Name="TrStatus" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="TR Status" sap:quickinfo="Status of request/task"/>
+                <Property Name="TrStatus_Description" Type="Edm.String" MaxLength="14" sap:display-format="UpperCase"/>
+                <Property Name="TrDescription" Type="Edm.String" MaxLength="60" sap:label="TR Description" sap:quickinfo="Short Description of Repository Objects"/>
+                <NavigationProperty Name="to_Subtask" Relationship="ZADOP_EPIC_DSB_SRV.assoc_E2D5A89E970984161593EC73A5BFBD64" FromRole="FromRole_assoc_E2D5A89E970984161593EC73A5BFBD64" ToRole="ToRole_assoc_E2D5A89E970984161593EC73A5BFBD64"/>
+            </EntityType>
+            <EntityType Name="ZI_ADOP_USERSTOYType" sap:label="Userstory details" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UserstoryId"/>
+                </Key>
+                <Property Name="UserstoryId" Type="Edm.String" Nullable="false" MaxLength="20" sap:display-format="UpperCase" sap:label="Userstory" sap:quickinfo="Jira ID"/>
+                <Property Name="PreProdTestStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PRE-PROD Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_PPTST" Type="Edm.Byte"/>
+                <Property Name="QaDeployStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="QA Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_QADEP_S" Type="Edm.Byte"/>
+                <Property Name="PreProdDeployStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PRE-PROD Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_PPDEP_S" Type="Edm.Byte"/>
+                <Property Name="ProdDeployStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="PROD Deploy" sap:quickinfo="Deployment Status"/>
+                <Property Name="Criticality_PRODDEP_S" Type="Edm.Byte"/>
+                <Property Name="ParentJiraId" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Jira ID"/>
+                <Property Name="CharmId" Type="Edm.String" MaxLength="32" sap:display-format="UpperCase" sap:label="ChaRM ID" sap:quickinfo="Character field, length 32"/>
+                <Property Name="CodeReviewStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Code Review" sap:quickinfo="Code Review Status"/>
+                <Property Name="CriticalityS_CR_S" Type="Edm.Byte"/>
+                <Property Name="DevTestStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="DEV Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_DEVTST_S" Type="Edm.Byte"/>
+                <Property Name="QaTestStatus_S" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="QA Test" sap:quickinfo="Test Status"/>
+                <Property Name="Criticality_QATST_S" Type="Edm.Byte"/>
+            </EntityType>
+            <Association Name="assoc_728B0560FDF8D31271E73E740DCE8EE3" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType" Multiplicity="1" Role="FromRole_assoc_728B0560FDF8D31271E73E740DCE8EE3"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_DEFECTDETAILSType" Multiplicity="*" Role="ToRole_assoc_728B0560FDF8D31271E73E740DCE8EE3"/>
+            </Association>
+            <Association Name="assoc_DF6E677546E33DA930B4F66F2B968724" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType" Multiplicity="1" Role="FromRole_assoc_DF6E677546E33DA930B4F66F2B968724"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TESTDETAILSType" Multiplicity="*" Role="ToRole_assoc_DF6E677546E33DA930B4F66F2B968724"/>
+            </Association>
+            <Association Name="assoc_0930B9D5F6230AA2F16D7AC9138BB9AD" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType" Multiplicity="1" Role="FromRole_assoc_0930B9D5F6230AA2F16D7AC9138BB9AD"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TRDETAILSType" Multiplicity="*" Role="ToRole_assoc_0930B9D5F6230AA2F16D7AC9138BB9AD"/>
+            </Association>
+            <Association Name="assoc_E2D5A89E970984161593EC73A5BFBD64" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TRDETAILSType" Multiplicity="1" Role="FromRole_assoc_E2D5A89E970984161593EC73A5BFBD64"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType" Multiplicity="1" Role="ToRole_assoc_E2D5A89E970984161593EC73A5BFBD64"/>
+            </Association>
+            <Association Name="assoc_67819F3338CC5E41F7FE231164775848" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZC_ADOP_EPICType" Multiplicity="1" Role="FromRole_assoc_67819F3338CC5E41F7FE231164775848"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TESTDETAILSType" Multiplicity="*" Role="ToRole_assoc_67819F3338CC5E41F7FE231164775848"/>
+            </Association>
+            <Association Name="assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZC_ADOP_EPICType" Multiplicity="1" Role="FromRole_assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_USERSTOYType" Multiplicity="*" Role="ToRole_assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755"/>
+            </Association>
+            <Association Name="assoc_6FF36ADAC17A4310E8198EE995073DBB" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZC_ADOP_EPICType" Multiplicity="1" Role="FromRole_assoc_6FF36ADAC17A4310E8198EE995073DBB"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_DEFECTDETAILSType" Multiplicity="*" Role="ToRole_assoc_6FF36ADAC17A4310E8198EE995073DBB"/>
+            </Association>
+            <Association Name="assoc_1F810514B05134623C031838A21CDA28" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TESTDETAILSType" Multiplicity="1" Role="FromRole_assoc_1F810514B05134623C031838A21CDA28"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType" Multiplicity="1" Role="ToRole_assoc_1F810514B05134623C031838A21CDA28"/>
+            </Association>
+            <Association Name="assoc_61301E49B6D042B5ECF87B5C8B20BC02" sap:content-version="1">
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_DEFECTDETAILSType" Multiplicity="1" Role="FromRole_assoc_61301E49B6D042B5ECF87B5C8B20BC02"/>
+                <End Type="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType" Multiplicity="1" Role="ToRole_assoc_61301E49B6D042B5ECF87B5C8B20BC02"/>
+            </Association>
+            <EntityContainer Name="ZADOP_EPIC_DSB_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZC_ADOP_EPIC" EntityType="ZADOP_EPIC_DSB_SRV.ZC_ADOP_EPICType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_ADOP_DEFECTDETAILS" EntityType="ZADOP_EPIC_DSB_SRV.ZI_ADOP_DEFECTDETAILSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_ADOP_SUBTASK" EntityType="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_ADOP_TESTDETAILS" EntityType="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TESTDETAILSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_ADOP_TRDETAILS" EntityType="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TRDETAILSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZI_ADOP_USERSTOY" EntityType="ZADOP_EPIC_DSB_SRV.ZI_ADOP_USERSTOYType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_6FF36ADAC17A4310E8198EE995073DBB" Association="ZADOP_EPIC_DSB_SRV.assoc_6FF36ADAC17A4310E8198EE995073DBB" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ADOP_EPIC" Role="FromRole_assoc_6FF36ADAC17A4310E8198EE995073DBB"/>
+                    <End EntitySet="ZI_ADOP_DEFECTDETAILS" Role="ToRole_assoc_6FF36ADAC17A4310E8198EE995073DBB"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_DF6E677546E33DA930B4F66F2B968724" Association="ZADOP_EPIC_DSB_SRV.assoc_DF6E677546E33DA930B4F66F2B968724" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_ADOP_SUBTASK" Role="FromRole_assoc_DF6E677546E33DA930B4F66F2B968724"/>
+                    <End EntitySet="ZI_ADOP_TESTDETAILS" Role="ToRole_assoc_DF6E677546E33DA930B4F66F2B968724"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E2D5A89E970984161593EC73A5BFBD64" Association="ZADOP_EPIC_DSB_SRV.assoc_E2D5A89E970984161593EC73A5BFBD64" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_ADOP_TRDETAILS" Role="FromRole_assoc_E2D5A89E970984161593EC73A5BFBD64"/>
+                    <End EntitySet="ZI_ADOP_SUBTASK" Role="ToRole_assoc_E2D5A89E970984161593EC73A5BFBD64"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_728B0560FDF8D31271E73E740DCE8EE3" Association="ZADOP_EPIC_DSB_SRV.assoc_728B0560FDF8D31271E73E740DCE8EE3" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_ADOP_SUBTASK" Role="FromRole_assoc_728B0560FDF8D31271E73E740DCE8EE3"/>
+                    <End EntitySet="ZI_ADOP_DEFECTDETAILS" Role="ToRole_assoc_728B0560FDF8D31271E73E740DCE8EE3"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_1F810514B05134623C031838A21CDA28" Association="ZADOP_EPIC_DSB_SRV.assoc_1F810514B05134623C031838A21CDA28" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_ADOP_TESTDETAILS" Role="FromRole_assoc_1F810514B05134623C031838A21CDA28"/>
+                    <End EntitySet="ZI_ADOP_SUBTASK" Role="ToRole_assoc_1F810514B05134623C031838A21CDA28"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_0930B9D5F6230AA2F16D7AC9138BB9AD" Association="ZADOP_EPIC_DSB_SRV.assoc_0930B9D5F6230AA2F16D7AC9138BB9AD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_ADOP_SUBTASK" Role="FromRole_assoc_0930B9D5F6230AA2F16D7AC9138BB9AD"/>
+                    <End EntitySet="ZI_ADOP_TRDETAILS" Role="ToRole_assoc_0930B9D5F6230AA2F16D7AC9138BB9AD"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755" Association="ZADOP_EPIC_DSB_SRV.assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ADOP_EPIC" Role="FromRole_assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755"/>
+                    <End EntitySet="ZI_ADOP_USERSTOY" Role="ToRole_assoc_BDCD45E1CD82AFE7C49BD6D6CC58F755"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_67819F3338CC5E41F7FE231164775848" Association="ZADOP_EPIC_DSB_SRV.assoc_67819F3338CC5E41F7FE231164775848" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZC_ADOP_EPIC" Role="FromRole_assoc_67819F3338CC5E41F7FE231164775848"/>
+                    <End EntitySet="ZI_ADOP_TESTDETAILS" Role="ToRole_assoc_67819F3338CC5E41F7FE231164775848"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_61301E49B6D042B5ECF87B5C8B20BC02" Association="ZADOP_EPIC_DSB_SRV.assoc_61301E49B6D042B5ECF87B5C8B20BC02" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZI_ADOP_DEFECTDETAILS" Role="FromRole_assoc_61301E49B6D042B5ECF87B5C8B20BC02"/>
+                    <End EntitySet="ZI_ADOP_SUBTASK" Role="ToRole_assoc_61301E49B6D042B5ECF87B5C8B20BC02"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZADOP_EPIC_DSB_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZADOP_EPIC_DSB_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>

@@ -1,0 +1,171 @@
+{
+    "resources": [
+        {
+            "name": "Component-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "controller/CustomerFormat-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/CustomerFormat.js"
+        },
+        {
+            "name": "controller/InitPage-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/InitPage.js"
+        },
+        {
+            "name": "controller/View1-dbg.controller.js",
+            "isDebug": true
+        },
+        {
+            "name": "controller/View1.controller.js"
+        },
+        {
+            "name": "css/style-dbg-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "di.code-validation.core_issues.json"
+        },
+        {
+            "name": "extended_runnable_file.html"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "localService/ZADOP_EPIC_DSB_ANNO_MDL.xml"
+        },
+        {
+            "name": "localService/ZADOP_EPIC_DSB_SRV/metadata.xml"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "model/models-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "serviceBinding-dbg.js",
+            "isDebug": true
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": "tmp/Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "tmp/Component.js"
+        },
+        {
+            "name": "tmp/controller/CustomerFormat.js"
+        },
+        {
+            "name": "tmp/controller/InitPage.js"
+        },
+        {
+            "name": "tmp/controller/View1.controller.js"
+        },
+        {
+            "name": "tmp/css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "tmp/css/style.css"
+        },
+        {
+            "name": "tmp/extended_runnable_file.html"
+        },
+        {
+            "name": "tmp/i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "tmp/index.html"
+        },
+        {
+            "name": "tmp/localService/ZADOP_EPIC_DSB_ANNO_MDL.xml"
+        },
+        {
+            "name": "tmp/localService/ZADOP_EPIC_DSB_SRV/metadata.xml"
+        },
+        {
+            "name": "tmp/localService/metadata.xml"
+        },
+        {
+            "name": "tmp/manifest.json"
+        },
+        {
+            "name": "tmp/model/models.js"
+        },
+        {
+            "name": "tmp/serviceBinding.js"
+        },
+        {
+            "name": "tmp/view/View1.view.xml"
+        },
+        {
+            "name": "tmp-dbg/Component.js"
+        },
+        {
+            "name": "tmp-dbg/controller/CustomerFormat.js"
+        },
+        {
+            "name": "tmp-dbg/controller/InitPage.js"
+        },
+        {
+            "name": "tmp-dbg/controller/View1.controller.js"
+        },
+        {
+            "name": "tmp-dbg/css/style-dbg.css",
+            "isDebug": true
+        },
+        {
+            "name": "tmp-dbg/css/style.css"
+        },
+        {
+            "name": "tmp-dbg/model/models.js"
+        },
+        {
+            "name": "tmp-dbg/serviceBinding.js"
+        },
+        {
+            "name": "view/View1.view.xml"
+        }
+    ]
+}

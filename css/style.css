@@ -1,0 +1,39 @@
+.v-m-legendGroup {
+    visibility: hidden!important
+}
+
+.RBGroupCls {
+    padding-top: 40px
+}
+
+.passed div div {
+    background-color: rgb(92, 186, 230)!important
+}
+
+.inprogress div div {
+    background-color: rgb(140, 211, 255)!important
+}
+
+.failed div div {
+    background-color: rgb(250, 195, 100)!important
+}
+
+.notstarted div div {
+    background-color: rgb(242, 210, 73)!important
+}
+
+.notfound div div {
+    background-color: #d998cb!important
+}
+
+.completed div div {
+    background-color: #5CBAE6!important
+}
+
+.sapMObjStatus {
+    color: lightslategrey;
+}
+
+.sapMObjStatusSuccess>.sapMObjStatusIcon {
+    color: limegreen;
+}

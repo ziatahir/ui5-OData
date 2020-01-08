@@ -1,0 +1,161 @@
+<mvc:View controllerName="Z_EPIC_DSB.controller.View1" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:smartChart="sap.ui.comp.smartchart"
+	xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" class="sapUiSizeCompact">
+	<m:VBox>
+		<m:HBox justifyContent="Center" alignItems="Center" alignContent="Center" class="sapUiLargeMarginTop">
+			<m:Label text="View Level: " class="sapUiSmallMarginEnd"></m:Label>
+			<m:Select id="viewLevelComboBox" change="onViewLevelChange" forceSelection="true">
+				<core:Item key="epicPage" text="Epic Level"/>
+				<core:Item key="userStoryPage" text="User Story Level"/>
+			</m:Select>
+		</m:HBox>
+		<m:NavContainer id="navCon" width="98%" height="40em" class="navContainerControl sapUiSmallMarginBottom" autoFocus="false">
+			<m:Page id="epicPage" showHeader="false">
+				<ObjectPageLayout id="epicObjectPageLayout" enableLazyLoading="true" showAnchorBar="false">
+					<sections>
+						<ObjectPageSection title="Epic Details" id="epicObjectPageSectionId" importance="Medium">
+							<subSections>
+								<ObjectPageSubSection class="objPageSection0">
+									<m:HBox width="100%">
+										<m:VBox width="20%" height="280px">
+											<m:VBox class="RBGroupCls">
+												<m:RadioButton text="PASSED" editable="false" class="passed"/>
+												<m:RadioButton text="IN PROGRESS" editable="false" class="inprogress"/>
+												<m:RadioButton text="FAILED" editable="false" class="failed"/>
+												<m:RadioButton text="NOT STARTED" editable="false" class="notstarted"/>
+												<m:RadioButton text="COMPLETED" editable="false" class="completed"/>
+												<m:RadioButton text="NOT FOUND" editable="false" class="notfound"/>
+											</m:VBox>
+										</m:VBox>
+										<m:VBox width="20%" height="280px">
+											<smartChart:SmartChart id="epicChart1" enableAutoBinding="true" entitySet="ZC_CHART_EP" data:chartQualifier="chart1" header="QA Test"
+												useVariantManagement="false" selectionMode="None" showChartTooltip="true" showDrillBreadcrumbs="false" showDetailsButton="false"
+												showDrillButtons="false" showLegendButton="false" showZoomButtons="false" useChartPersonalisation="false"
+												showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+										</m:VBox>
+										<m:VBox width="20%" height="280px">
+											<smartChart:SmartChart id="epicChart2" enableAutoBinding="true" entitySet="ZC_CHART_EP" data:chartQualifier="chart2" header="Pre-Prod Test"
+												useVariantManagement="false" selectionMode="None" showChartTooltip="true" showDrillBreadcrumbs="false" showDetailsButton="false"
+												showDrillButtons="false" showLegendButton="false" showZoomButtons="false" useChartPersonalisation="false"
+												showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+										</m:VBox>
+										<m:VBox width="20%" height="280px">
+											<smartChart:SmartChart id="epicChart3" enableAutoBinding="true" entitySet="ZC_CHART_EP" data:chartQualifier="chart3" header="QA Deploy"
+												useVariantManagement="false" selectionMode="None" showChartTooltip="true" showDrillBreadcrumbs="false" showDetailsButton="false"
+												showDrillButtons="false" showLegendButton="false" showZoomButtons="false" useChartPersonalisation="false"
+												showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+										</m:VBox>
+										<m:VBox width="20%" height="280px">
+											<smartChart:SmartChart id="epicChart4" enableAutoBinding="true" entitySet="ZC_CHART_EP" data:chartQualifier="chart4"
+												header="Pre-Prod Deploy" useVariantManagement="false" selectionMode="None" showChartTooltip="true" showDrillBreadcrumbs="false"
+												showDetailsButton="false" showDrillButtons="false" showLegendButton="false" showZoomButtons="false" useChartPersonalisation="false"
+												showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+										</m:VBox>
+										<m:VBox width="20%" height="280px">
+											<smartChart:SmartChart id="epicChart5" enableAutoBinding="true" entitySet="ZC_CHART_EP" data:chartQualifier="chart5" header="Prod Deploy"
+												useVariantManagement="false" selectionMode="None" showChartTooltip="true" showDrillBreadcrumbs="false" showDetailsButton="false"
+												showDrillButtons="false" showLegendButton="false" showZoomButtons="false" useChartPersonalisation="false"
+												showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+										</m:VBox>
+									</m:HBox>
+								</ObjectPageSubSection>
+								<ObjectPageSubSection class="objPageSection0">
+									<smartFilterBar:SmartFilterBar id="epicSmartFilterBar" entitySet="ZC_ADOP_EPIC"></smartFilterBar:SmartFilterBar>
+								</ObjectPageSubSection>
+								<ObjectPageSubSection class="objPageSection1" id="epicObjectPageSubSectionId">
+									<blocks>
+										<smartTable:SmartTable id="epicSmartTable" showFullScreenButton="true" entitySet="ZC_ADOP_EPIC" smartFilterId="epicSmartFilterBar"
+											tableType="ResponsiveTable" useExportToExcel="true" useVariantManagement="false" useTablePersonalisation="true" showRowCount="true"
+											persistencyKey="persSmartTable" smartVariant="pageVariantId" enableAutoBinding="false" demandPopin="true">
+											<m:Table>
+												<m:ColumnListItem type="Navigation" press="onRowClickEpic"></m:ColumnListItem>
+											</m:Table>
+										</smartTable:SmartTable>
+									</blocks>
+									<moreBlocks/>
+									<actions/>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>
+			</m:Page>
+			<m:Page id="userStoryPage" showHeader="false">
+				<ObjectPageLayout id="userStoryObjectPageLayout" enableLazyLoading="true" showAnchorBar="false">
+					<sections>
+						<ObjectPageSection title="User Stories Details" id="userStoryObjectPageSectionId" importance="Medium">
+							<subSections>
+								<ObjectPageSubSection class="objPageSection0">
+									<m:HBox justifyContent="Start" alignContent="SpaceAround">
+										<m:Label class="sapUiSmallMarginEnd" text="Project Track:"/>
+										<m:Select id="userStoryComboBox" change="onSelectionUserStory" forceSelection="true"
+											items="{path:'sampleDatajson>/results', sorter: { path: 'project_track' }}">
+											<core:Item key="{sampleDatajson>project_track}" text="{sampleDatajson>project_track}"/>
+										</m:Select>
+									</m:HBox>
+								</ObjectPageSubSection>
+								<ObjectPageSubSection class="objPageSection0">
+									<m:ScrollContainer height="2%" width="100%" horizontal="true" focusable="true">
+										<m:HBox width="100%">
+											<m:VBox width="20%" height="280px">
+												<m:VBox class="RBGroupCls">
+													<m:RadioButton text="PASSED" editable="false" class="passed"/>
+													<m:RadioButton text="IN PROGRESS" editable="false" class="inprogress"/>
+													<m:RadioButton text="NOT STARTED" editable="false" class="notstarted"/>
+													<m:RadioButton text="NOT FOUND" editable="false" class="notfound"/>
+													<m:RadioButton text="FAILED" editable="false" class="failed"/>
+												</m:VBox>
+											</m:VBox>
+											<m:VBox width="22%" height="280px">
+												<smartChart:SmartChart id="userStoryChart1" enableAutoBinding="true" entitySet="ZC_CHART" data:chartQualifier="chart2" header="Code Review"
+													useVariantManagement="false" beforeRebindChart="beforeRebindChartUserStory" selectionMode="None" showChartTooltip="true"
+													showDrillBreadcrumbs="false" showDetailsButton="false" showDrillButtons="false" showLegendButton="false" showZoomButtons="false"
+													useChartPersonalisation="false" showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+											</m:VBox>
+											<m:VBox width="22%" height="280px">
+												<smartChart:SmartChart id="userStoryChart2" enableAutoBinding="true" entitySet="ZC_CHART" data:chartQualifier="chart1"
+													useVariantManagement="false" header="Test-Dev" selectionMode="None" beforeRebindChart="beforeRebindChartUserStory" showChartTooltip="true"
+													showDrillBreadcrumbs="false" showDetailsButton="false" showDrillButtons="false" showLegendButton="false" showZoomButtons="false"
+													useChartPersonalisation="false" showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+											</m:VBox>
+											<m:VBox width="22%" height="280px">
+												<smartChart:SmartChart id="userStoryChart3" enableAutoBinding="true" entitySet="ZC_CHART" data:chartQualifier="chart3"
+													useVariantManagement="false" header="Test-QA" selectionMode="None" beforeRebindChart="beforeRebindChartUserStory" showChartTooltip="true"
+													showDrillBreadcrumbs="false" showDetailsButton="false" showDrillButtons="false" showLegendButton="false" showZoomButtons="false"
+													useChartPersonalisation="false" showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+											</m:VBox>
+											<m:VBox width="22%" height="280px">
+												<smartChart:SmartChart id="userStoryChart4" enableAutoBinding="true" entitySet="ZC_CHART" data:chartQualifier="chart4"
+													useVariantManagement="false" header="Test-Prod" selectionMode="None" beforeRebindChart="beforeRebindChartUserStory" showChartTooltip="true"
+													showDrillBreadcrumbs="false" showDetailsButton="false" showDrillButtons="false" showLegendButton="false" showZoomButtons="false"
+													useChartPersonalisation="false" showSemanticNavigationButton="false" legendVisible="false" showFullScreenButton="false"></smartChart:SmartChart>
+											</m:VBox>
+										</m:HBox>
+									</m:ScrollContainer>
+								</ObjectPageSubSection>
+								<ObjectPageSubSection class="objPageSection0">
+									<smartFilterBar:SmartFilterBar id="userStorySmartFilterBar" entitySet="ZC_ADOP_USERSTORY"></smartFilterBar:SmartFilterBar>
+								</ObjectPageSubSection>
+								<ObjectPageSubSection class="objPageSection1" id="userStoyObjectPageSubSectionId">
+									<blocks>
+										<smartTable:SmartTable id="userStorySmartTable" showFullScreenButton="true" entitySet="ZC_ADOP_USERSTORY"
+											smartFilterId="userStorySmartFilterBar" tableType="ResponsiveTable" useExportToExcel="true" useVariantManagement="false"
+											useTablePersonalisation="true" showRowCount="true" persistencyKey="persSmartTable" smartVariant="pageVariantId" enableAutoBinding="false"
+											demandPopin="true">
+											<m:Table>
+												<m:ColumnListItem type="Navigation" press="onRowClickUserStory"></m:ColumnListItem>
+											</m:Table>
+										</smartTable:SmartTable>
+									</blocks>
+									<moreBlocks/>
+									<actions/>
+								</ObjectPageSubSection>
+							</subSections>
+						</ObjectPageSection>
+					</sections>
+				</ObjectPageLayout>
+			</m:Page>
+		</m:NavContainer>
+	</m:VBox>
+</mvc:View>

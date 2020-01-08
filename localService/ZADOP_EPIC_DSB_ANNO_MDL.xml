@@ -1,0 +1,1276 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+	</edmx:Reference>
+	<edmx:Reference
+		Uri="../../catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+		<edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="../../../sap/zadop_epic_dsb_srv/$metadata">
+		<edmx:Include Namespace="ZADOP_EPIC_DSB_SRV" Alias="SAP"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.xml">
+		<edmx:Include Alias="Auth" Namespace="Org.OData.Authorization.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="zadop_epic_dsb_anno_mdl.v1">
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZC_ADOP_EPICType">
+				<Annotation Term="UI.FieldGroup" Qualifier="EpicInformation">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="EpicOwner"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ReleaseCycle"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Epic Information"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="EpicId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ReleaseCycle"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="EpicOwner"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Epic"/>
+							<PropertyValue Property="Value" Path="EpicId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Test"/>
+							<PropertyValue Property="Value" Path="QualityTestStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_QATST"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Test"/>
+							<PropertyValue Property="Value" Path="PreProdTestStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_PPTST"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Deploy"/>
+							<PropertyValue Property="Value" Path="QaDeployStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_QADEP"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Deploy"/>
+							<PropertyValue Property="Value" Path="PreProdDeployStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_PPDEP"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PROD Deploy"/>
+							<PropertyValue Property="Value" Path="ProdDeployStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_PRODDEP"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>EpicId</PropertyPath>
+						<PropertyPath>ReleaseCycle</PropertyPath>
+						<PropertyPath>EpicOwner</PropertyPath>
+						<PropertyPath>QualityTestStatus</PropertyPath>
+						<PropertyPath>PreProdTestStatus</PropertyPath>
+						<PropertyPath>QaDeployStatus</PropertyPath>
+						<PropertyPath>PreProdDeployStatus</PropertyPath>
+						<PropertyPath>ProdDeployStatus</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZC_ADOP_USERSTORYType">
+				<Annotation Term="UI.FieldGroup" Qualifier="UserstoryInformation">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CharmId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="TechArea"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="SapUserId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="UserstoryOwner"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ProjectTrack"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Userstory Information"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UserStoryId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ProjectTrack"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TechArea"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UserstoryOwner"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SapUserId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CharmId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Userstory"/>
+							<PropertyValue Property="Value" Path="UserStoryId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Code Review"/>
+							<PropertyValue Property="Value" Path="CodeReviewStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_CR"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="DEV Test"/>
+							<PropertyValue Property="Value" Path="DevTestStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_DEVTST"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Test"/>
+							<PropertyValue Property="Value" Path="QualityTestStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_QATST"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Test"/>
+							<PropertyValue Property="Value" Path="PreProdTestStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_PPTST"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Deploy"/>
+							<PropertyValue Property="Value" Path="QaDeployStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_QADEP"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Deploy"/>
+							<PropertyValue Property="Value" Path="PreProdDeployStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_PPDEP"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PROD Deploy"/>
+							<PropertyValue Property="Value" Path="ProdDeployStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+							<PropertyValue Property="Criticality" Path="Criticality_PRODDEP"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>UserStoryId</PropertyPath>
+						<PropertyPath>CharmId</PropertyPath>
+						<PropertyPath>CodeReviewStatus</PropertyPath>
+						<PropertyPath>DevTestStatus</PropertyPath>
+						<PropertyPath>QualityTestStatus</PropertyPath>
+						<PropertyPath>PreProdTestStatus</PropertyPath>
+						<PropertyPath>QaDeployStatus</PropertyPath>
+						<PropertyPath>PreProdDeployStatus</PropertyPath>
+						<PropertyPath>ProdDeployStatus</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZC_CHARTType">
+				<Annotation Term="UI.Chart" Qualifier="chart4">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart Sample4"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>Preprod_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="Preprod_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="chart3">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart Sample3"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>QA_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="QA_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="chart2">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart Sample2"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>Review_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="Review_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="chart1">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart Sample1"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>dev_tst_status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="dev_tst_status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group1">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Status"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 1"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group2">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="Dev Test"/>
+									<PropertyValue Property="Value" Path="dev_tst_status"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 2"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group3">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="Code Review Test"/>
+									<PropertyValue Property="Value" Path="Review_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 3"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group4">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="QA Test"/>
+									<PropertyValue Property="Value" Path="QA_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 4"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group5">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="Preprod Test"/>
+									<PropertyValue Property="Value" Path="Preprod_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 5"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group6">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="QA deploy status"/>
+									<PropertyValue Property="Value" Path="qa_deploy_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 6"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group7">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="PREPROD deploy status"/>
+									<PropertyValue Property="Value" Path="preprod_deploy_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 7"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group8">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="PROD deploy status"/>
+									<PropertyValue Property="Value" Path="prod_deploy_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 8"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Status"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="dev_tst_status"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Review_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="QA_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Preprod_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="qa_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="preprod_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="prod_deploy_Count"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Status"/>
+							<PropertyValue Property="Value" Path="Status"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Dev Test"/>
+							<PropertyValue Property="Value" Path="dev_tst_status"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Code Review Test"/>
+							<PropertyValue Property="Value" Path="Review_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Test"/>
+							<PropertyValue Property="Value" Path="QA_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Preprod Test"/>
+							<PropertyValue Property="Value" Path="Preprod_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA deploy status"/>
+							<PropertyValue Property="Value" Path="qa_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PREPROD deploy status"/>
+							<PropertyValue Property="Value" Path="preprod_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PROD deploy status"/>
+							<PropertyValue Property="Value" Path="prod_deploy_Count"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>Status</PropertyPath>
+						<PropertyPath>dev_tst_status</PropertyPath>
+						<PropertyPath>Review_Count</PropertyPath>
+						<PropertyPath>QA_Count</PropertyPath>
+						<PropertyPath>Preprod_Count</PropertyPath>
+						<PropertyPath>qa_deploy_Count</PropertyPath>
+						<PropertyPath>preprod_deploy_Count</PropertyPath>
+						<PropertyPath>prod_deploy_Count</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZC_CHART_EPType">
+				<Annotation Term="UI.Chart" Qualifier="chart5">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart Prod Deploy"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>prod_deploy_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="prod_deploy_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="chart4">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart Pre-Prod Deploy"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>preprod_deploy_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="preprod_deploy_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="chart3">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart QA Deploy"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>qa_deploy_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="qa_deploy_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="chart2">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart Pre-Prod Test"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>Preprod_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="Preprod_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="chart1">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Donut Chart QA Test"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>Status</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="Status"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>QA_Count</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="QA_Count"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group1">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Status"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 1"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group2">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="QA Test"/>
+									<PropertyValue Property="Value" Path="QA_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 2"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group3">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="Preprod Test"/>
+									<PropertyValue Property="Value" Path="Preprod_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 3"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group4">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="QA deploy status"/>
+									<PropertyValue Property="Value" Path="qa_deploy_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 4"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group5">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="PREPROD deploy status"/>
+									<PropertyValue Property="Value" Path="preprod_deploy_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 5"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group6">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Label" String="PROD deploy status"/>
+									<PropertyValue Property="Value" Path="prod_deploy_Count"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Group 6"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Status"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="QA_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Preprod_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="qa_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="preprod_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="prod_deploy_Count"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Status"/>
+							<PropertyValue Property="Value" Path="Status"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Test"/>
+							<PropertyValue Property="Value" Path="QA_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Preprod Test"/>
+							<PropertyValue Property="Value" Path="Preprod_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA deploy status"/>
+							<PropertyValue Property="Value" Path="qa_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PREPROD deploy status"/>
+							<PropertyValue Property="Value" Path="preprod_deploy_Count"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PROD deploy status"/>
+							<PropertyValue Property="Value" Path="prod_deploy_Count"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>Status</PropertyPath>
+						<PropertyPath>QA_Count</PropertyPath>
+						<PropertyPath>Preprod_Count</PropertyPath>
+						<PropertyPath>qa_deploy_Count</PropertyPath>
+						<PropertyPath>preprod_deploy_Count</PropertyPath>
+						<PropertyPath>prod_deploy_Count</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_ADOP_DEFECTDETAILSType">
+				<Annotation Term="UI.FieldGroup" Qualifier="DefectId">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="CreatedDate"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="DefectStatus"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="PhaseName"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="JiraId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="DefectId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="DefectId"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record>
+						<PropertyValue Property="TypeName" String="SAP Defect Details"/>
+						<PropertyValue Property="TypeNamePlural" String="SAP Defect Details"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Label" String="SAP Defect Details"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="JiraId"/>
+							<PropertyValue Property="Value" Path="JiraId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="DefectId"/>
+							<PropertyValue Property="Value" Path="DefectId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_ADOP_SUBTASKType">
+				<Annotation Term="UI.FieldGroup" Qualifier="SubtaskInformation">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="SapUser_S"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="SubtaskOwner"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="TechArea_S"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ParentJiraId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="SubtaskId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Subtask Information"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record>
+						<PropertyValue Property="TypeName" String="Subtask Details"/>
+						<PropertyValue Property="TypeNamePlural" String="Subtask Details"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Label" String="Subtask Details"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SubtaskId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ParentJiraId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="TechArea_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SubtaskOwner"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="SapUser_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Subtask"/>
+							<PropertyValue Property="Value" Path="SubtaskId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Code Review"/>
+							<PropertyValue Property="Value" Path="CodeReviewStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Parent Jira ID"/>
+							<PropertyValue Property="Value" Path="ParentJiraId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="DEV Test"/>
+							<PropertyValue Property="Value" Path="DevTestStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Test"/>
+							<PropertyValue Property="Value" Path="QaTestStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Test"/>
+							<PropertyValue Property="Value" Path="PreProdTestStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Deploy"/>
+							<PropertyValue Property="Value" Path="QaDeployStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Deploy"/>
+							<PropertyValue Property="Value" Path="PreProdDeployStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PROD Deploy"/>
+							<PropertyValue Property="Value" Path="ProdDeployStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TESTDETAILSType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record>
+						<PropertyValue Property="TypeName" String="Test Details"/>
+						<PropertyValue Property="TypeNamePlural" String="Test Details"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Label" String="Test Details"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Identification">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ParentJiraId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Userstory"/>
+							<PropertyValue Property="Value" Path="ParentJiraId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Environment"/>
+							<PropertyValue Property="Value" Path="Environment"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Test Cycle"/>
+							<PropertyValue Property="Value" Path="TestStage"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Test Status"/>
+							<PropertyValue Property="Value" Path="TestStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Test Date"/>
+							<PropertyValue Property="Value" Path="ExeDate"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Test Time"/>
+							<PropertyValue Property="Value" Path="ExeTime"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_ADOP_TRDETAILSType">
+				<Annotation Term="UI.FieldGroup" Qualifier="TransportRequest">
+					<Record>
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="TrDescription"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="TrStatus"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="TrType"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="TechArea"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ParentJiraId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="SubtaskId"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="Tr"/>
+									<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Label" String="Transport Request"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record>
+						<PropertyValue Property="TypeName" String="SAP TR Details"/>
+						<PropertyValue Property="TypeNamePlural" String="SAP TR Details"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Label" String="SAP TR Details"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Subtask"/>
+							<PropertyValue Property="Value" Path="SubtaskId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Transport Request"/>
+							<PropertyValue Property="Value" Path="Tr"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="TR Type"/>
+							<PropertyValue Property="Value" Path="TrType"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="TR Status"/>
+							<PropertyValue Property="Value" Path="TrStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Code Review"/>
+							<PropertyValue Property="Value" Path="CodeReviewStatus_T"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Unit Test"/>
+							<PropertyValue Property="Value" Path="UtStatus"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="DEV Test"/>
+							<PropertyValue Property="Value" Path="DevTestStatus_T"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Deploy"/>
+							<PropertyValue Property="Value" Path="QaDeployStatus_T"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Deploy"/>
+							<PropertyValue Property="Value" Path="PreProdDeplotStatus_T"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PROD Deploy"/>
+							<PropertyValue Property="Value" Path="ProdDeployStatus_T"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_ADOP_USERSTOYType/UserstoryId">
+				<Annotation Term="Common.SemanticObject" String="UserstoryId"/>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_ADOP_USERSTOYType">
+				<Annotation Term="UI.HeaderInfo">
+					<Record>
+						<PropertyValue Property="TypeName" String="Userstory Details"/>
+						<PropertyValue Property="TypeNamePlural" String="Userstory Details"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Label" String="Userstory Details"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="Label" String="Userstory"/>
+							<PropertyValue Property="SemanticObject" String="UserstoryId"/>
+							<PropertyValue Property="Action" String="display"/>
+							<PropertyValue Property="RequiresContext" Bool="false"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Charm ID"/>
+							<PropertyValue Property="Value" Path="CharmId"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Code Review"/>
+							<PropertyValue Property="Value" Path="CodeReviewStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="DEV Test"/>
+							<PropertyValue Property="Value" Path="DevTestStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Test"/>
+							<PropertyValue Property="Value" Path="QaTestStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Test"/>
+							<PropertyValue Property="Value" Path="PreProdTestStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="QA Deploy"/>
+							<PropertyValue Property="Value" Path="QaDeployStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PRE-PROD Deploy"/>
+							<PropertyValue Property="Value" Path="PreProdDeployStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="PROD Deploy"/>
+							<PropertyValue Property="Value" Path="ProdDeployStatus_S"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_STATUSType/domname">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+				<Annotation Term="UI.Hidden"/>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_STATUSType/Text">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+				<Annotation Term="UI.Hidden"/>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_STATUSType">
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Label" String="Status"/>
+							<PropertyValue Property="Value" Path="Value"/>
+							<Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="ZADOP_EPIC_DSB_SRV.ZI_USERSTORY_VHType/ProjectTrack">
+				<Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Hidden"/>
+				<Annotation Term="UI.Hidden"/>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
