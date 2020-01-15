@@ -1,24 +1,35 @@
 pipeline {
     
+	parameters {
+        string(name: 'organisation', defaultValue: 'P2001960486trial_trial', description: 'org name to deploy app')
+		string(name: 'space', defaultValue: 'qa', description: 'space name')
+		}
+	
     agent any
     
     stages {
 
-	    
+	
         stage('Deploy-SCP') {
            steps {
-		    cleanWs()
-		    echo "deploying on scp"
-			  checkout scm
+		      echo "deploying on scp"
 			  
-			  pushToCloudFoundry(
-              target: 'https://api.cf.eu10.hana.ondemand.com',
-              organization: 'P2001960486trial_trial',
-              cloudSpace: 'dev',
-              credentialsId: 'cf-scp',
-			  manifestChoice: [manifestFile: 'manifest.yaml']
-              )
-            }
+			  cleanWs()
+			  checkout scm
+
+		  
+			  withCredentials([usernamePassword(credentialsId: 'CF-devsecops20', passwordVariable: 'cfPassword', usernameVariable: 'cfUser')])
+			    {
+				    sh '''
+                     cf login -a 'https://api.cf.eu10.hana.ondemand.com' -u ${cfUser} -p ${cfPassword} -o $organisation -s $space
+					 cf push
+					'''
+				}
+
+             }
         }
+       
+        
     }
+    
 }
